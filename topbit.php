@@ -29,8 +29,7 @@
 
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/data_style.css">    <!-- custom style sheet -->
-
-    
+  
 </head>
 
 <body>
