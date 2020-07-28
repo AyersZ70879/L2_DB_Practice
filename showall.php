@@ -3,7 +3,7 @@
     $find_sql = "SELECT *
     FROM `00_L2_games`
     JOIN 00_L2_games_genre ON (00_L2_games.GenreID = 00_L2_games_genre.GenreID)
-    
+    JOIN 00_L2_games_developer ON (00_L2_games.DeveloperID = 00_L2_games_genre.DeveloperID)
     
     ";
     $find_query = mysqli_query($dbconnect, $find_sql);
@@ -49,6 +49,12 @@
                 <p>
                     <b>Genre</b>:
                     <?php echo $find_rs['Genre']?>
+                    
+                    <br />
+                    
+                    <b>Developer</b>:
+                    <?php echo $find_rs['DevName']?>
+                    
                 </p>
                 
                 
