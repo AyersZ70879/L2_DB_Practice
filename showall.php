@@ -42,8 +42,8 @@
                     <a href="<?php echo $find_rs['URL']; ?>">
                         <?php echo $find_rs['Name']; ?>
                     </a>
-                </span>
-                
+                </span> - <?php echo $find_rs['Subtitle']; ?>
+            
                 <br />
                 
                 <p>
@@ -54,6 +54,10 @@
                     
                     <b>Developer</b>:
                     <?php echo $find_rs['DevName']?>
+                    
+                    <br />
+                    <b>Rating</b> <?php echo $find_rs['User Rating']; ?> 
+                    (based on <?php echo $find_rs['Rating Count']; ?> votes)
                     
                 </p>
                 
