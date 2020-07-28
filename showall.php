@@ -2,7 +2,7 @@
 
     $find_sql = "SELECT *
     FROM `00_L2_games`";
-    $find_query = sysqli_query($dbconnect, $find_sql);
+    $find_query = mysqli_query($dbconnect, $find_sql);
     $find_rs = mysqli_fetch_assoc($find_query);
     $count = mysqli_num_rows($find_query);
     
