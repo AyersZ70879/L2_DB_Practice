@@ -48,19 +48,20 @@
                             <a href="<?php echo $find_rs['URL']; ?>">
                                 <?php echo $find_rs['Name']; ?>
                             </a>
-                        </span> - <?php echo $find_rs['Subtitle']; ?>
+                        </span>
                     </div> <!-- /Title -->
                     
                     <?php 
                         if($find_rs['Subtitle'] != "")
                         {
+                            
                         ?>
                     <div>
                     
                         &nbsp; &nbsp; | &nbsp; &nbsp;
-                        <?php echo $find_rs['Subtitle']; ?>
+                        <?php echo $find_rs['Subtitle'] ?>
                             
-                    </div>
+                    </div> <!-- / subtitle -->
                     
                     <?php
                         }
@@ -70,7 +71,6 @@
                 
                 <!-- / Heading and subtitle -->
             
-                <br />
                 
                 <p>
                     <b>Genre</b>:
