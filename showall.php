@@ -71,6 +71,26 @@
                 
                 <!-- / Heading and subtitle -->
                 
+                <!-- Ratings Area -->
+                
+                <div class="flex-container">
+                    
+                    <!-- Partial Stars Original Source:
+                    https://codepen.io/Bluetidepro/pen/GkpEa -->
+                    <div class="star_ratings_sprite">
+                        
+                    </div> <!-- / star rating div -->
+                    
+                    <div class="actual-rating">
+                        (<?php echo $find_rs['User Rating'] ?> based 
+                        on <?php echo $find_rs['Rating Count'] ?> ratings)
+                        
+                    </div> <!-- / text rating div -->
+                    
+                </div> <!-- / ratings flexbox -->
+                
+                <!-- / Ratings Area -->
+                
                 <!-- Price -->
                 <?php
                     if($find_rs['Price'] == 0) 
