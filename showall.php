@@ -38,11 +38,37 @@
                     ?>
             <!-- Results fo here -->
             <div class="results">
-                <span class="sub_heading">
-                    <a href="<?php echo $find_rs['URL']; ?>">
-                        <?php echo $find_rs['Name']; ?>
-                    </a>
-                </span> - <?php echo $find_rs['Subtitle']; ?>
+                
+                <!-- Heading and subtitle -->
+                
+                <div class="flex_container">
+                    <div>
+                    
+                        <span class="sub_heading">
+                            <a href="<?php echo $find_rs['URL']; ?>">
+                                <?php echo $find_rs['Name']; ?>
+                            </a>
+                        </span> - <?php echo $find_rs['Subtitle']; ?>
+                    </div> <!-- /Title -->
+                    
+                    <?php 
+                        if($find_rs['Subtitle'] != "")
+                        {
+                        ?>
+                    <div>
+                    
+                        &nbsp; &nbsp; | &nbsp; &nbsp;
+                        <?php echo $find_rs['Subtitle']; ?>
+                            
+                    </div>
+                    
+                    <?php
+                        }
+                    ?>
+                
+                </div>
+                
+                <!-- / Heading and subtitle -->
             
                 <br />
                 
