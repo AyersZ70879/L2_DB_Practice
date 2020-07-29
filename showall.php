@@ -83,7 +83,8 @@
                     
                     <div class="actual-rating">
                         (<?php echo $find_rs['User Rating'] ?> based 
-                        on <?php echo $find_rs['Rating Count'] ?> ratings)
+                        on <?php echo number_format($find_rs['Rating Count']) ?> 
+                        ratings)
                         
                     </div> <!-- / text rating div -->
                     
