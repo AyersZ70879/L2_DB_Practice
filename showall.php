@@ -70,24 +70,27 @@
                 </div>
                 
                 <!-- / Heading and subtitle -->
-            
                 
-                <p>
-                    <b>Genre</b>:
-                    <?php echo $find_rs['Genre']?>
+                <!-- Price -->
+                <?php
+                    if($find_rs['Price'] == 0) 
+                    {
+                      ?>
+                <p>Free!</p>
+                <?php
+                    }  // end price if
                     
-                    <br />
-                    
-                    <b>Developer</b>:
-                    <?php echo $find_rs['DevName']?>
-                    
-                    <br />
-                    <b>Rating</b> <?php echo $find_rs['User Rating']; ?> 
-                    (based on <?php echo $find_rs['Rating Count']; ?> votes)
-                    
-                </p>
-                <hr />
-                <?php echo $find_rs['Description']; ?>
+                    else {
+                        
+                        ?>
+                    <b>Price:</b> $<?php echo $find_rs['Price'] ?>
+                
+                    <?php
+                        
+                    } // end price else (display costs)
+                ?>
+                
+                
                 
             </div> <!-- / results -->
             
