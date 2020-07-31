@@ -77,7 +77,9 @@
                     
                     <!-- Partial Stars Original Source:
                     https://codepen.io/Bluetidepro/pen/GkpEa -->
-                    <div class="star_ratings_sprite">
+                    <div class="star-ratings-sprite">
+                        
+                        <span style="width:<?php echo $find_rs['User Rating'] / 5 * 100; ?>%" class="star-ratings-sprite-rating"></span>
                         
                     </div> <!-- / star rating div -->
                     
