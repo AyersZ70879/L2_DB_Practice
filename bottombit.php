@@ -58,7 +58,28 @@
                 ?>
                 
             </select>  
+                
+            <!-- Cost -->
+            <div class="flex-container">
+                
+                <div class="adv-text">
+                    Cost&nbsp;(less&nbsp;than): 
+                </div> <!-- / cost label -->
+                
+                <div>
+                    <input class="adv" type="text" name="cost" size="40" value="" placeholder="$..."/>
+                </div> <!-- / input box -->
+                
+            </div> <!-- / cost flexbox -->
+                
+            <!-- No In App Checkbox -->
+                
+            <!-- Rating -->
             
+            <!-- Age -->
+                
+                
+            <!-- Search button is below -->
             <input class="submit advanced-button" type="submit" name="advanced" value="Search &nbsp; &#xf002;" />
             
                 
