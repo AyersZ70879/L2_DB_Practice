@@ -1,6 +1,6 @@
 <?php include("topbit.php");
 
-    $name_dev = $POST['dev_name'];
+    $name_dev = $_POST['dev_name'];
 
     $find_sql = "SELECT *
     FROM `00_L2_games`
