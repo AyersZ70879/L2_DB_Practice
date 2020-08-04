@@ -211,3 +211,10 @@ input {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+
+.free {
+    width: 245px;
+    border-radius: 5px;
+    font-size: 105%;
+}
