@@ -73,11 +73,48 @@
             </div> <!-- / cost flexbox -->
                 
             <!-- No In App Checkbox -->
+            <input class="adv-txt" type="checkbox" name="in_app" value="0">No In App Purchase
                 
             <!-- Rating -->
-            
-            <!-- Age -->
+            <div class="flex-container">
+                <div class="adv-txt">
+                Rating:
+                </div> <!-- / rating label -->
                 
+                <div>
+                    <select class="search adv" name="rate_more_less">
+                        <option value="" disabled>Choose...</option>
+                        <option value="at least">At Least</option>
+                        <option value="at most">At Most</option>
+                    </select>
+                    
+                </div> <!-- / rating drop down -->
+                
+                <div>
+                    <input class="adv" type="text" name="rating" size="3" value="" placeholder=""/>
+                </div> <!-- / rating amount -->
+                                
+            </div> <!-- / rating flexbox -->
+                
+            <!-- Age -->
+            <div class="flex-container">
+                <div class="adv-txt">
+                Age:
+                </div> <!-- / age label -->
+                
+                <div>
+                    <select class="search adv" name="age_more_less">
+                        <option value="" disabled>Age...</option>
+                        <option value="at least">At Least</option>
+                        <option value="at most">At Most</option>                    
+                    </select>
+                </div> <!-- / age drop down -->
+                
+                <div>
+                    <input class="adv" type="text" name="age" size="3" value="" placeholder=""/>
+                </div> <!-- / age amount -->
+                
+                </div> <!-- / age flexbox --> 
                 
             <!-- Search button is below -->
             <input class="submit advanced-button" type="submit" name="advanced" value="Search &nbsp; &#xf002;" />
