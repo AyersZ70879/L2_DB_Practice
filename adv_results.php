@@ -1,11 +1,11 @@
 <?php include("topbit.php");
 
-    $app_name = mysqli_real_escape_string($dbconnect, $_POST['Name']);
-    $developer = mysqli_real_escape_string($dbconnect, $_POST['DevName']);
-    $genre = mysqli_real_escape_string($dbconnect, $_POST['Genre']);
-    $cost = mysqli_real_escape_string($dbconnect, $_POST['Price']);
+    $app_name = mysqli_real_escape_string($dbconnect, $_POST['app_name']);
+    $developer = mysqli_real_escape_string($dbconnect, $_POST['dev_name']);
+    $genre = mysqli_real_escape_string($dbconnect, $_POST['genre']);
+    $cost = mysqli_real_escape_string($dbconnect, $_POST['cost']);
 
-    if (isset($POST['In_App'])) {
+    if (isset($POST['in_app'])) {
         $in_app = 0;
     }
     
