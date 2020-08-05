@@ -24,7 +24,7 @@
             
             <h2>Advanced Search</h2>
                 
-            <form class="searchform" method="post" action="advanced.php" enctype="multipart/form-data">
+            <form class="searchform" method="post" action="adv_results.php" enctype="multipart/form-data">
             
             <input class="adv" type="text" name="app_name" sixe="40" value="" placeholder="App Name / Title"/>
                 
