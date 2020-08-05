@@ -17,7 +17,7 @@
     JOIN 00_L2_games_genre ON (00_L2_games.GenreID = 00_L2_games_genre.GenreID)
     JOIN 00_L2_games_developer ON (00_L2_games.DeveloperID = 00_L2_games_developer.DeveloperID)
     WHERE `Name` LIKE '%$app_name%'
-    WHERE `DevName` LIKE '%$developer%'
+    AND `DevName` LIKE '%$developer%'
     AND `Genre` LIKE '%$genre%'
     AND `Price` <= '$cost'
     AND (`In App` = $in_app OR `In App` = 0)
