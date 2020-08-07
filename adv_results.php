@@ -28,17 +28,17 @@
     $rating_more_less = mysqli_real_escape_string($dbconnect, $_POST['rate_more_less']);
     $rating = mysqli_real_escape_string($dbconnect, $_POST['rating']);
 
-    if ($rating_more_less == "at least") {
-        $rate_op = ">=";
-    }
+    if ($rating == "") {$rating = 0;
+                       $rating_more_less = "at least";}
+    
 
-    elseif($rating_more_less == "at most") {
+    if($rating_more_less == "at most") {
         $rate_op = "<=";
     }
 
     else {
         $rate_op = "<=";
-        $rating = 0;
+        
         
     } // end rating if / elseif / else
 
@@ -46,17 +46,16 @@
     $age_more_less = mysqli_real_escape_string($dbconnect, $_POST['age_more_less']);
     $age = mysqli_real_escape_string($dbconnect, $_POST['age']);
 
-    if ($age_more_less == "at least") {
-        $age_op = ">=";
-    }
+    if ($age == "") {$age = 0;
+                    $age_more_less = "at least"; } // Set age to 0 if it is blank
 
-    elseif($age_more_less == "at most") {
+    if($age_more_less == "at most") {
         $age_op = "<=";
     }
 
     else {
         $age_op = "<=";
-        $age = 0;
+        
         
     } // end age if / elseif / else
 

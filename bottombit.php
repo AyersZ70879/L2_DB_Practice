@@ -83,7 +83,7 @@
                 
                 <div>
                     <select class="search adv" name="rate_more_less">
-                        <option value="" disabled>Choose...</option>
+                        <option value="" disabled selected>Choose...</option>
                         <option value="at least">At Least</option>
                         <option value="at most">At Most</option>
                     </select>
@@ -104,7 +104,7 @@
                 
                 <div>
                     <select class="search adv" name="age_more_less">
-                        <option value="" disabled>Age...</option>
+                        <option value="" disabled selected>Age...</option>
                         <option value="at least">At Least</option>
                         <option value="at most">At Most</option>                    
                     </select>
