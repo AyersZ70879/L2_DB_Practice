@@ -4,9 +4,7 @@
     $developer = mysqli_real_escape_string($dbconnect, $_POST['dev_name']);
     $genre = mysqli_real_escape_string($dbconnect, $_POST['genre']);
     $cost = mysqli_real_escape_string($dbconnect, $_POST['cost']);
-    $rating = mysqli_real_escape_string($dbconnect, $_POST['rating']);
-    $age = mysqli_real_escape_string($dbconnect, $_POST['age']);
-    
+   
     // Cost code (to handle when cost is not specified...)
     if ($cost=="") {
         $cost_op = ">=";
