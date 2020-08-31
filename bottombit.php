@@ -35,7 +35,7 @@
             
             <select class="search adv" name="genre">
                 
-            <option value="" selected>Genre...</option>
+            <option value="" disabled selected>Genre...</option>
                 
             <!-- get option from database -->
                 <?php 
@@ -104,7 +104,7 @@
                 
                 <div>
                     <select class="search adv" name="age_more_less">
-                        <option value="" selected>Choose...</option>
+                        <option value="" disabled selected>Choose...</option>
                         <option value="at least">At Least</option>
                         <option value="at most">At Most</option>                    
                     </select>
