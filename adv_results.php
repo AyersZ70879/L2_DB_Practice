@@ -38,7 +38,7 @@
     }
 
     else {
-        $rate_op = "<=";
+        $rate_op = ">=";
         
         
     } // end rating if / elseif / else
@@ -55,7 +55,7 @@
     }
 
     else {
-        $age_op = "<=";
+        $age_op = ">=";
         
         
         
