@@ -4,6 +4,8 @@
     $developer = mysqli_real_escape_string($dbconnect, $_POST['dev_name']);
     $genre = mysqli_real_escape_string($dbconnect, $_POST['genre']);
     $cost = mysqli_real_escape_string($dbconnect, $_POST['cost']);
+    $rating = mysqli_real_escape_string($dbconnect, $_POST['rating']);
+    $age = mysqli_real_escape_string($dbconnect, $_POST['age']);
     
     // Cost code (to handle when cost is not specified...)
     if ($cost=="") {
@@ -30,7 +32,7 @@
     $rating = mysqli_real_escape_string($dbconnect, $_POST['rating']);
 
     if ($rating == "") {$rating = 0;
-                       $rating_more_less = "at least";}
+                        $rating_more_less = "at least";}// Set age to 0 if it is blank
     
 
     if($rating_more_less == "at most") {
@@ -48,7 +50,7 @@
     $age = mysqli_real_escape_string($dbconnect, $_POST['age']);
 
     if ($age == "") {$age = 0;
-                    $age_more_less = "at least"; } // Set age to 0 if it is blank
+                     $age_more_less = "at least";} // Set age to 0 if it is blank
 
     if($age_more_less == "at most") {
         $age_op = "<=";
@@ -56,6 +58,7 @@
 
     else {
         $age_op = "<=";
+        
         
         
     } // end age if / elseif / else
@@ -68,6 +71,9 @@
     AND `DevName` LIKE '%$developer%'
     AND `Genre` LIKE '%$genre%'
     AND `Price` $cost_op '$cost'
+    AND (`In App` = $in_app OR `In App` = 0)
+    AND `User Rating` $rate_op $rating
+    AND `Age` $age_op $age
     
     ";
     $find_query = mysqli_query($dbconnect, $find_sql);
