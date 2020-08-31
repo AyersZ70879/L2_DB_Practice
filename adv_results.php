@@ -68,9 +68,6 @@
     AND `DevName` LIKE '%$developer%'
     AND `Genre` LIKE '%$genre%'
     AND `Price` $cost_op '$cost'
-    AND (`In App` = $in_app OR `In App` = 0)
-    AND `User Rating` $rate_op $rating
-    AND `Age` $age_op $age
     
     ";
     $find_query = mysqli_query($dbconnect, $find_sql);
