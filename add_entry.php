@@ -49,13 +49,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 <select class="adv" name="genre">
                     <option value="" selected>Genre (Choose something)...</option>
                     
-                    <!-- get option from database -->
+                    <!-- get options from database -->
                     <?php
                     
-                    do {}
+                    do {
                         ?>
                     <option value="<?php echo $genre_rs['GenreID']; ?>"><?php echo $genre_rs['Genre']; ?></option>
                     
+                    <?php
+                    } // end genre do loop
+                    while ($genre_rs=mysqli_fetch_assoc($genre_query))
+                    ?>
+                        
                 </select>
                 
                 <!-- Developer Name (required) -->
@@ -70,15 +75,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 
                 <!-- # of ratings (integer more than 0) -->
-                <input class="add-field" type="text" name="rate_count" value="<?php echo $rate_count; ?>" placeholder="# of Ratings ..." />
+                <input class="add-field" type="text" name="count" value="<?php echo $rate_count; ?>" placeholder="# of Ratings ..." />
                 
                 <!-- Cost (Decimal 2dp, must be more than 0) -->
-                <input class="add-field" type="text" name="app_name" value="<?php echo $app_name; ?>" placeholder="Cost (number only) ..." />
+                <input class="add-field" type="text" name="price" value="<?php echo $cost; ?>" placeholder="Cost (number only) ..." />
+                
+                <br /><br />
                 
                 <!-- In App Purchase radio buttons -->
-                <input class="add-field" type="text" name="inapp" value="<?php echo $inapp; ?>" placeholder="In App ..." />
-                <!-- Description text area -->
+                <div>
+                    <b>In App Purchase: </b>
+                    <!-- defaults to 'yes' -->
+                    <!-- NOTE: value in databse boolean, so 'no' become 0 and 'yes' becomes 1 -->
+                    
+                    <input type="radio" name="in_app" value="1" checked="checked" />Yes
+                    <input type="radio" name="in_app" value="0" />No
                 
+                </div>
+                
+                <br /> 
+                                
+                <!-- Description text area -->
+                <textarea class="add-field <?php echo $description_field?>" name="description" placeholder="Description..." rows="6"><?php echo $description; ?></textarea>
+                          
                 <!-- Submit Button -->
                 <p>
                     <input class="submit advanced-button" type="submit" value="Submit" />
