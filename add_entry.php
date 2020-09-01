@@ -46,8 +46,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input class="add-field" type="text" name="url" value="<?php echo $url; ?>" placeholder="URL (required) ..." />
                 
                 <!-- Genre dropdown (required) -->
-                <select class="adv" required name="genre">
+                <select class="adv" name="genre">
                     <option value="" selected>Genre (Choose something)...</option>
+                    
+                    <!-- get option from database -->
+                    <?php
+                    
+                    do {}
+                        ?>
+                    <option value="<?php echo $genre_rs['GenreID']; ?>"><?php echo $genre_rs['Genre']; ?></option>
+                    
                 </select>
                 
                 <!-- Developer Name (required) -->
