@@ -93,6 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 <br />
                 
+                
                 <!-- Cost (Decimal 2dp, must be more than 0) -->
                 <input class="add-field" type="text" name="price" value="<?php echo $cost; ?>" placeholder="Cost (number only) ..." />
                 
