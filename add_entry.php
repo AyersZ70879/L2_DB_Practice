@@ -1,7 +1,7 @@
 <?php include("topbit.php");
 
 // Get Genre list from database
-$ganre_sql="SELECT * FROM `genre` ORDER BY `genre`.`Genre` ASC ";
+$genre_sql="SELECT * FROM `00_L2_games_genre` ORDER BY `00_L2_games_genre`.`Genre` ASC";
 $genre_query=mysqli_query($dbconnect, $genre_sql);
 $genre_rs=mysqli_fetch_assoc($genre_query);
  
@@ -39,11 +39,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- App Name (Required) -->
                 <input class="add-field" type="text" name="app_name" value="<?php echo $app_name; ?>" placeholder="App Name (required) ..." />
                 
+                <br />
+                
                 <!-- Subtitle (optional) -->
                 <input class="add-field" type="text" name="subtitle" value="<?php echo $subtitle; ?>" placeholder="Subtitle (optional) ..." />
                 
+                <br />
+                
                 <!-- URL (required, must start http://) -->
                 <input class="add-field" type="text" name="url" value="<?php echo $url; ?>" placeholder="URL (required) ..." />
+                
+                <br />
                 
                 <!-- Genre dropdown (required) -->
                 <select class="adv" name="genre">
@@ -63,19 +69,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         
                 </select>
                 
+                <br />
+                
                 <!-- Developer Name (required) -->
                 <input class="add-field" type="text" name="dev_name" value="<?php echo $dev_name; ?>" placeholder="Developer Name (required) ..." />
                 
+                <br />
+                
                 <!-- Age (set to 0 if left blank) -->
                 <input class="add-field" type="text" name="age" value="<?php echo $age; ?>" placeholder="Age (0 for all) ..." />
+                
+                <br />
                 
                 <!-- Rating (Number between 0-5, 1 dp) -->
                 <div>
                     <input class="add-field" type="text" name="rating" value="<?php echo $rating; ?>" step="0.1" min="0" max="5" placeholder="Rating (0-5)" />
                 </div>
                 
+                <br />
+                
                 <!-- # of ratings (integer more than 0) -->
                 <input class="add-field" type="text" name="count" value="<?php echo $rate_count; ?>" placeholder="# of Ratings ..." />
+                
+                <br />
                 
                 <!-- Cost (Decimal 2dp, must be more than 0) -->
                 <input class="add-field" type="text" name="price" value="<?php echo $cost; ?>" placeholder="Cost (number only) ..." />

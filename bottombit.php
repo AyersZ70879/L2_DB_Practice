@@ -1,6 +1,6 @@
         <div class="box side">
            
-           <h2><a href="addentry.php">Add an App</a> | <a class="side" href="showall.php">Show All</a></h2>
+           <h2><a class="side" href="add_entry.php">Add an App</a> | <a class="side" href="showall.php">Show All</a></h2>
            
            <form class="searchform" method="post" action="name_dev.php" enctype="multipart/form-data">
             

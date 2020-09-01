@@ -278,5 +278,6 @@ select {
 }
 
 .add-field {
-    
+     width: 95%;
+    margin-bottom: 5px;
 }
