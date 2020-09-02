@@ -57,12 +57,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Go to success page
     
     // get developer ID if it exists
-    $dev_sql ="";
+    $dev_sql ="SELECT * FROM `developer` WHERE `DevName` LIKE '$dev_name'";
     $dev_query=mysqli_query($dbconnect, $dev_sql;)
     $dev_rs=mysqli_fetch_assoc($dev_query);
     $dev_count=mysqli_num_rows($dev_query);
     
-    // ig developer not already in developer table, add them and get the 'new' developerID
+    // if developer not already in developer table, add them and get the 'new' developerID
+    if ($dev_count > 0) {
+        $developerID = $dev_rs['DeveloperID'];
+    }
+    
+    else {
+    $add_dev_sql = "";
+    $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
+    
+    } // end adding developer to developer table
     
     // Add entry to database
     
