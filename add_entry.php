@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     else {
-    $add_dev_sql = "";
+    $add_dev_sql = "INSERT INTO `ayersz70879`.`00_L2_games_developer`(`DeveloperID` , `DevName`) VALUES (NULL , '$dev_name');";
     $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
     
     } // end adding developer to developer table
