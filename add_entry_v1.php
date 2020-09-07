@@ -23,64 +23,6 @@ $has_errors = "no";
 
 // Code below excutes when the form is submitted...
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    // Get values from the form
-    $app_name = mysqli_real_escape_string($dbconnect, $_POST['app_name']);
-    $subtitle = mysqli_real_escape_string($dbconnect, $_POST['subtitle']);
-    $url = mysqli_real_escape_string($dbconnect, $_POST['url']);
-    
-    $genreID = mysqli_real_escape_string($dbconnect, $_POST['genre']);
-    
-    // if GenreID, is not blank, get genre so that genre box does not lose its value if there is an error
-    if ($genreID != "") {
-        $genreitem_sql = "SELECT * FROM `genre` WHERE `GenreID` = $genreID";
-        $genreitem_query=mysqli_query($dbconnect, $genreitem_sql);
-        $genreitem_rsd=mysqli_fetch_assoc($genreitem_query);
-        
-        $genre = $genreitem_rs['Genre'];
-        
-    } //end genreID if
-    
-    $dev_name = mysqli_real_escape_string($dbconnect, $_POST['dev_name']);
-    $age = mysqli_real_escape_string($dbconnect, $_POST['age']);
-    $rating = mysqli_real_escape_string($dbconnect, $_POST['rating']);
-    $rate_count = mysqli_real_escape_string($dbconnect, $_POST['count']);
-    $cost = mysqli_real_escape_string($dbconnect, $_POST['price']);
-    $in_app = mysqli_real_escape_string($dbconnect, $_POST['in_app']);
-    $description = mysqli_real_escape_string($dbconnect, $_POST['description']);
-    
-    // error checking will go here
-    
-    // if there are no errors
-    if ($has_errors == "no") {
-    
-    // Go to success page
-    
-    // get developer ID if it exists
-    $dev_sql ="SELECT * FROM `developer` WHERE `DevName` LIKE '$dev_name'";
-    $dev_query=mysqli_query($dbconnect, $dev_sql);
-    $dev_rs=mysqli_fetch_assoc($dev_query);
-    $dev_count=mysqli_num_rows($dev_query);
-    
-    // if developer not already in developer table, add them and get the 'new' developerID
-    if ($dev_count > 0) {
-        $developerID = $dev_rs['DeveloperID'];
-    }
-    
-    else {
-    $add_dev_sql = "INSERT INTO `ayersz70879`.`00_L2_games_developer`(`DeveloperID` , `DevName`) VALUES (NULL , '$dev_name');";
-    $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
-        
-    // Get developer ID
-    $newdev_sql = "";
-    $newdev_query=mysqli_query($dbconnect, $newdev_sql)
-    
-    }// end adding developer to developer table
-    
-    // Add entry to database
-    
-    }   // end of 'no errors' if
-    
     echo "You pushed the button";
     
 } // end of button submitted code
@@ -111,23 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 <!-- Genre dropdown (required) -->
                 <select class="adv" required name="genre">
-                    <!-- first / selected option -->
-                    
-                    <?php 
-                    if($genreID=="") {
-                        ?>
                     <option value="" selected>Genre (Choose something)...</option>
-                    
-                    <?php
-                        
-                    }
-                    
-                    else {
-                       ?> 
-                    <option value="<?php echo $genreID; ?>" selected><?php echo $genre; ?></option>
-                    <?php 
-                    }
-                    ?>
                     
                     <!-- get options from database -->
                     <?php
@@ -179,24 +105,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     <!-- defaults to 'yes' -->
                     <!-- NOTE: value in databse boolean, so 'no' become 0 and 'yes' becomes 1 -->
                     
-                    <?php
-                    if($in_app==1) {
-                    // Defult value, 'YES' is selected
-                        ?>
                     <input type="radio" name="in_app" value="1" checked="checked" />Yes
                     <input type="radio" name="in_app" value="0" />No
-                    
-                    <?php    
-                    } // end 'yes in_app' if
-                    
-                    else{
-                        ?>
-                    <input type="radio" name="in_app" value="1" />Yes
-                    <input type="radio" name="in_app" value="0" checked="checked" />
-                    
-                    <?php                    
-                    } // end 'in_app' else
-                    ?>
                 
                 </div>
                 
