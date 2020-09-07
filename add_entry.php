@@ -159,32 +159,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 <br /><br />
                 
-                <!-- In App Purchase radio buttons -->
-                <div>
-                    <b>In App Purchase: </b>
-                    <!-- defaults to 'yes' -->
-                    <!-- NOTE: value in databse boolean, so 'no' become 0 and 'yes' becomes 1 -->
-                    
-                    
-                    <?php
-                    if($in_app==1) {
-                        // Defult value, 'YES' is selected
-                            ?>
-                        <input type="radio" name="in_app" value="1" checked="checked" />Yes
-                        <input type="radio" name="in_app" value="0" />No
-
-                        <?php    
-                    } // end 'yes in_app' if
-                    
-                    else{
-                        ?>
-                        <input type="radio" name="in_app" value="1" />Yes
-                        <input type="radio" name="in_app" value="0" checked="checked" />
-
-                        <?php                    
-                    } // end 'in_app' else
-                    ?>
+                <!-- In App Purchase box -->
                 
+                <div>
+                
+                <input class="adv-txt" type="checkbox" name="in_app" value="1">Contains In App Purchases
+
                 </div>
                 
                 
