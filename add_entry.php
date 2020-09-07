@@ -167,20 +167,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     
                     <?php
                     if($in_app==1) {
-                    // Defult value, 'YES' is selected
-                        ?>
-                    <input type="radio" name="in_app" value="1" checked="checked" />Yes
-                    <input type="radio" name="in_app" value="0" />No
-                    
-                    <?php    
+                        // Defult value, 'YES' is selected
+                            ?>
+                        <input type="radio" name="in_app" value="1" checked="checked" />Yes
+                        <input type="radio" name="in_app" value="0" />No
+
+                        <?php    
                     } // end 'yes in_app' if
                     
                     else{
                         ?>
-                    <input type="radio" name="in_app" value="1" />Yes
-                    <input type="radio" name="in_app" value="0" checked="checked" />
-                    
-                    <?php                    
+                        <input type="radio" name="in_app" value="1" />Yes
+                        <input type="radio" name="in_app" value="0" checked="checked" />
+
+                        <?php                    
                     } // end 'in_app' else
                     ?>
                 
