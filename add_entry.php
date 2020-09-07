@@ -165,6 +165,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     <!-- defaults to 'yes' -->
                     <!-- NOTE: value in databse boolean, so 'no' become 0 and 'yes' becomes 1 -->
                     
+                    
                     <?php
                     if($in_app==1) {
                         // Defult value, 'YES' is selected
