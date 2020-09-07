@@ -57,25 +57,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Go to success page
     
     // get developer ID if it exists
-    $dev_sql ="SELECT * FROM `developer` WHERE `DevName` LIKE '$dev_name'";
+    $dev_sql ="";
     $dev_query=mysqli_query($dbconnect, $dev_sql);
     $dev_rs=mysqli_fetch_assoc($dev_query);
     $dev_count=mysqli_num_rows($dev_query);
     
-    // if developer not already in developer table, add them and get the 'new' developerID
-    if ($dev_count > 0) {
-        $developerID = $dev_rs['DeveloperID'];
-    }
-    
-    else {
-    $add_dev_sql = "INSERT INTO `ayersz70879`.`00_L2_games_developer`(`DeveloperID` , `DevName`) VALUES (NULL , '$dev_name');";
-    $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
-        
-    // Get developer ID
-    $newdev_sql = "";
-    $newdev_query=mysqli_query($dbconnect, $newdev_sql)
-    
-    }// end adding developer to developer table
+    // ig developer not already in developer table, add them and get the 'new' developerID
     
     // Add entry to database
     
@@ -180,7 +167,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     <!-- NOTE: value in databse boolean, so 'no' become 0 and 'yes' becomes 1 -->
                     
                     <?php
-                    if($in_app==1) {
+                    if($inapp==1) {
                     // Defult value, 'YES' is selected
                         ?>
                     <input type="radio" name="in_app" value="1" checked="checked" />Yes
