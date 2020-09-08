@@ -55,38 +55,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // if there are no errors
     if ($has_errors == "no") {
     
-        // Go to success page
+            // Go to success page
 
-        // get developer ID if it exists
-        $dev_sql ="SELECT *
-FROM `00_L2_games_developer`
-ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
-        $dev_query=mysqli_query($dbconnect, $dev_sql);
-        $dev_rs=mysqli_fetch_assoc($dev_query);
-        $dev_count=mysqli_num_rows($dev_query);
+            // get developer ID if it exists
+            $dev_sql ="SELECT *
+    FROM `00_L2_games_developer`
+    ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
+            $dev_query=mysqli_query($dbconnect, $dev_sql);
+            $dev_rs=mysqli_fetch_assoc($dev_query);
+            $dev_count=mysqli_num_rows($dev_query);
 
-        // if developer not already in developer table, add them and get the 'new' developerID
-        
-        if ($dev_count > 0) {
-            $developerID = $dev_rs['DeveloperID'];
-        }
+            // if developer not already in developer table, add them and get the 'new' developerID
 
-        else {
-            $add_dev_sql ="INSERT INTO `ayersz70879`.`00_L2_games_developer`(`DeveloperID` , `DevName`) VALUES (NULL , '$dev_name');";
-            $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
+            if ($dev_count > 0) {
+                $developerID = $dev_rs['DeveloperID'];
+            }
 
-        // Get developer ID
-        $newdev_sql = "SELECT *
-FROM `00_L2_games_developer`
-ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
-        $newdev_query=mysqli_query($dbconnect, $newdev_sql);
-        $newdev_rs=mysqli_fetch_assoc($newdev_query);
+            else {
+                $add_dev_sql ="INSERT INTO `ayersz70879`.`00_L2_games_developer` (
+    `DeveloperID` ,
+    `DevName`
+    )
+    VALUES (
+    NULL , '$dev_name'
+    );";
+                $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
 
-        $developerID = $newdev_rs['DeveloperID'];
+            // Get developer ID
+            $newdev_sql = "SELECT *
+    FROM `00_L2_games_developer`
+    ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
+            $newdev_query=mysqli_query($dbconnect, $newdev_sql);
+            $newdev_rs=mysqli_fetch_assoc($newdev_query);
 
-        } // end adding developer to developer table
-        
-        // Add entry to database
+            $developerID = $newdev_rs['DeveloperID'];
+
+            } // end adding developer to developer table
+
+            // Add entry to database
     
     }   // end of 'no errors' if
     
