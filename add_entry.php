@@ -57,12 +57,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         // Go to success page
 
         // get developer ID if it exists
-        $dev_sql ="";
+        $dev_sql ="SELECT *
+FROM `00_L2_games_developer`
+ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
         $dev_query=mysqli_query($dbconnect, $dev_sql);
         $dev_rs=mysqli_fetch_assoc($dev_query);
         $dev_count=mysqli_num_rows($dev_query);
 
-        // ig developer not already in developer table, add them and get the 'new' developerID
+        // if developer not already in developer table, add them and get the 'new' developerID
+        if ($dev_count > 0) {
+            $developerID = $dev_rs['DeveloperID'];
+        }
+        
+        else {
+            $add_dev_sql ="INSERT INTO `ayersz70879`.`00_L2_games_developer`(`DeveloperID` , `DevName`) VALUES (NULL , '$dev_name');";
+            $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
+        
+        // Get developer ID
+        $newdev_sql = "SELECT *
+FROM `00_L2_games_developer`
+ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
+        $newdev_query=mysqli_query($dbconnect, $newdev_sql);
+        $newdev_rs=mysqli_fetch_assoc($newdev_query);
+        
+        $developerID = $newdev_rs['DeveloperID'];
+            
+        } // end adding developer to developer table
 
         // Add entry to database
     
@@ -82,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                   action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                 
                 <!-- App Name (Required) -->
-                <input class="add-field" type="text" required name="app_name" value="<?php echo $app_name; ?>" placeholder="App Name (required) ..." />
+                <input class="add-field" type="text" name="app_name" value="<?php echo $app_name; ?>" placeholder="App Name (required) ..." />
                 
                 <br />
                 
@@ -92,12 +112,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 <br />
                 
                 <!-- URL (required, must start http://) -->
-                <input class="add-field" type="text" required name="url" value="<?php echo $url; ?>" placeholder="URL (required) ..." />
+                <input class="add-field" type="text" name="url" value="<?php echo $url; ?>" placeholder="URL (required) ..." />
                 
                 <br />
                 
                 <!-- Genre dropdown (required) -->
-                <select class="adv" required name="genre">
+                <select class="adv" name="genre">
                     <!-- first / selected option -->
                     
                     <?php 
@@ -133,7 +153,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 <br />
                 
                 <!-- Developer Name (required) -->
-                <input class="add-field" type="text" required name="dev_name" value="<?php echo $dev_name; ?>" placeholder="Developer Name (required) ..." />
+                <input class="add-field" type="text" name="dev_name" value="<?php echo $dev_name; ?>" placeholder="Developer Name (required) ..." />
                 
                 <br />
                 
@@ -144,27 +164,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 <!-- Rating (Number between 0-5, 1 dp) -->
                 <div>
-                    <input class="add-field" type="text" required name="rating" value="<?php echo $rating; ?>" step="0.1" min="0" max="5" placeholder="Rating (0-5)" />
+                    <input class="add-field" type="text" name="rating" value="<?php echo $rating; ?>" step="0.1" min="0" max="5" placeholder="Rating (0-5)" />
                 </div>
                 
                 
                 <!-- # of ratings (integer more than 0) -->
-                <input class="add-field" type="text" required name="count" value="<?php echo $rate_count; ?>" placeholder="# of Ratings ..." />
+                <input class="add-field" type="text" name="count" value="<?php echo $rate_count; ?>" placeholder="# of Ratings ..." />
                 
                 <br />
                 
                 
                 <!-- Cost (Decimal 2dp, must be more than 0) -->
-                <input class="add-field" type="text" required name="price" value="<?php echo $cost; ?>" placeholder="Cost (number only) ..." />
+                <input class="add-field" type="text" name="price" value="<?php echo $cost; ?>" placeholder="Cost (number only) ..." />
                 
                 <br /><br />
                 
                 <!-- In App Purchase box -->
-                
                 <div>
                 
                 <input class="adv-txt" type="checkbox" name="in_app" value="1">Contains In App Purchases
-
                 </div>
                 
                 
