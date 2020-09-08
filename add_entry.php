@@ -24,7 +24,7 @@ $has_errors = "no";
 // Code below excutes when the form is submitted...
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    // Get values from the form
+// Get values from the form
     $app_name = mysqli_real_escape_string($dbconnect, $_POST['app_name']);
     $subtitle = mysqli_real_escape_string($dbconnect, $_POST['subtitle']);
     $url = mysqli_real_escape_string($dbconnect, $_POST['url']);
