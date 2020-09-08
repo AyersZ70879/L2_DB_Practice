@@ -55,6 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // if there are no errors
     if ($has_errors == "no") {
     
+        
             // Go to success page
 
             // get developer ID if it exists
