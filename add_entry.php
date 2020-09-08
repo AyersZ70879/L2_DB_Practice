@@ -41,6 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         
     } //end genreID if
     
+    
     $dev_name = mysqli_real_escape_string($dbconnect, $_POST['dev_name']);
     $age = mysqli_real_escape_string($dbconnect, $_POST['age']);
     $rating = mysqli_real_escape_string($dbconnect, $_POST['rating']);
