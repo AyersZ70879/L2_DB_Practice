@@ -59,38 +59,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // get developer ID if it exists
             $dev_sql ="SELECT *
-    FROM `00_L2_games_developer`
-    ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
+FROM `00_L2_games_developer`
+ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
             $dev_query=mysqli_query($dbconnect, $dev_sql);
             $dev_rs=mysqli_fetch_assoc($dev_query);
             $dev_count=mysqli_num_rows($dev_query);
 
             // if developer not already in developer table, add them and get the 'new' developerID
+        if ($dev_count > 0) {
+            $developerID = $dev_rs['DeveloperID'];
+        }
 
-            if ($dev_count > 0) {
-                $developerID = $dev_rs['DeveloperID'];
-            }
+        else {
+            $add_dev_sql ="INSERT INTO `ayersz70879`.`00_L2_games_developer`(`DeveloperID` , `DevName`) VALUES (NULL , '$dev_name');";
+            $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
 
-            else {
-                $add_dev_sql ="INSERT INTO `ayersz70879`.`00_L2_games_developer` (
-    `DeveloperID` ,
-    `DevName`
-    )
-    VALUES (
-    NULL , '$dev_name'
-    );";
-                $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
+        // Get developer ID
+        $newdev_sql = "SELECT *
+FROM `00_L2_games_developer`
+ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
+        $newdev_query=mysqli_query($dbconnect, $newdev_sql);
+        $newdev_rs=mysqli_fetch_assoc($newdev_query);
 
-            // Get developer ID
-            $newdev_sql = "SELECT *
-    FROM `00_L2_games_developer`
-    ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
-            $newdev_query=mysqli_query($dbconnect, $newdev_sql);
-            $newdev_rs=mysqli_fetch_assoc($newdev_query);
+        $developerID = $newdev_rs['DeveloperID'];
 
-            $developerID = $newdev_rs['DeveloperID'];
-
-            } // end adding developer to developer table
+        } // end adding developer to developer table
 
             // Add entry to database
     
