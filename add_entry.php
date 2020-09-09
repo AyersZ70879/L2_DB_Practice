@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
         
             // Go to success page
-            header('Location: add_success.php')
+            header('Location: add_success.php');
             // get developer ID if it exists
             $dev_sql ="SELECT *
 FROM `00_L2_games_developer`
@@ -92,7 +92,9 @@ WHERE `DevName` LIKE '$dev_name'";
 
         } // end adding developer to developer table
 
-            // Add entry to database
+        // Add entry to database
+        $addentry_sql = "INSERT INTO `ayersz70879`.`00_L2_games` (`ID`, `Name`, `Subtitle`, `URL`, `GenreID`, `DeveloperID`, `Age`, `User Rating`, `Rating Count`, `Price`, `In App`, `Description`) VALUES (NULL, '$app_name', '$subtitle', '$url', '$genreID', '$developerID', '$age', '$rating', '$rate_count', '$cost', '$in_app', '$description');";
+        $addentry_query=mysqli_query($dbconnect,addentry_sql);
     
     }   // end of 'no errors' if
     

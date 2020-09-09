@@ -1,7 +1,7 @@
 <?php include("topbit.php")?>
 
         <div class="box main">
-            <h2>Congradulations</h2>
+            <h2>Congratulations</h2>
             
             
             <p>
