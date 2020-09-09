@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
         
             // Go to success page
-
+            header('Location: add_success.php')
             // get developer ID if it exists
             $dev_sql ="SELECT *
 FROM `00_L2_games_developer`
