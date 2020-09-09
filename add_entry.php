@@ -93,7 +93,7 @@ WHERE `DevName` LIKE '$dev_name'";
         } // end adding developer to developer table
 
         // Add entry to database
-        $addentry_sql = "INSERT INTO `ayersz70879`.`00_L2_games` (`ID`, `Name`, `Subtitle`, `URL`, `GenreID`, `DeveloperID`, `Age`, `User Rating`, `Rating Count`, `Price`, `In App`, `Description`) VALUES (NULL, '$app_name', '$subtitle', '$url', '$genreID', '$developerID', '$age', '$rating', '$rate_count', '$cost', '$in_app', '$description');";
+        $addentry_sql = "INSERT INTO `ayersz70879`.`00_L2_games` (`ID`, `Name`, `Subtitle`, `URL`, `GenreID`, `DeveloperID`, `Age`, `User Rating`, `Rating Count`, `Price`, `In App`, `Description`) VALUES (NULL, '$app_name', 'subtitle', 'url', '2', '3', '16', '5', '1234', '1.99', '1', 'description');";
         $addentry_query=mysqli_query($dbconnect,addentry_sql);
     
     }   // end of 'no errors' if
