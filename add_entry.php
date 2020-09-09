@@ -61,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             // get developer ID if it exists
             $dev_sql ="SELECT *
 FROM `00_L2_games_developer`
-ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
+WHERE `DevName` LIKE '$dev_name'";
             $dev_query=mysqli_query($dbconnect, $dev_sql);
             $dev_rs=mysqli_fetch_assoc($dev_query);
             $dev_count=mysqli_num_rows($dev_query);
@@ -72,13 +72,19 @@ ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
         }
 
         else {
-            $add_dev_sql ="INSERT INTO `ayersz70879`.`00_L2_games_developer`(`DeveloperID` , `DevName`) VALUES (NULL , '$dev_name');";
+            $add_dev_sql ="INSERT INTO `ayersz70879`.`00_L2_games_developer` (
+`DeveloperID` ,
+`DevName`
+)
+VALUES (
+NULL , '$dev_name'
+);";
             $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
 
         // Get developer ID
         $newdev_sql = "SELECT *
 FROM `00_L2_games_developer`
-ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
+WHERE `DevName` LIKE '$dev_name'";
         $newdev_query=mysqli_query($dbconnect, $newdev_sql);
         $newdev_rs=mysqli_fetch_assoc($newdev_query);
 
@@ -185,7 +191,7 @@ ORDER BY `00_L2_games_developer`.`DevName` LIKE '$dev_name'";
                 
                 <div>
                 
-                <input class="adv-txt" type="checkbox" name="in_app" value="1">Contains In App Purchases
+                <input class="adv-txt" type="checkbox" name="in_app" value="0">No In App Purchases
 
                 </div>
                 
