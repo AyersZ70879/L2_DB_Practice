@@ -33,10 +33,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // if GenreID, is not blank, get genre so that genre box does not lose its value if there is an error
     if ($genreID != "") {
-        $genreitem_sql = "SELECT * FROM `genre` WHERE `GenreID` = $genreID";
+        $genreitem_sql = "SELECT * FROM `00_L2_games_genre` WHERE `GenreID` = $genreID";
         $genreitem_query=mysqli_query($dbconnect, $genreitem_sql);
         $genreitem_rsd=mysqli_fetch_assoc($genreitem_query);
-        
         $genre = $genreitem_rs['Genre'];
         
     } //end genreID if
@@ -58,6 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         
             // Go to success page
             header('Location: add_success.php');
+        
             // get developer ID if it exists
             $dev_sql ="SELECT *
 FROM `00_L2_games_developer`
@@ -96,11 +96,28 @@ WHERE `DevName` LIKE '$dev_name'";
         $addentry_sql = "INSERT INTO `ayersz70879`.`00_L2_games` (`ID`, `Name`, `Subtitle`, `URL`, `GenreID`, `DeveloperID`, `Age`, `User Rating`, `Rating Count`, `Price`, `In App`, `Description`) VALUES (NULL, '$app_name', '$subtitle', '$url', '$genreID', '$developerID', '$age', '$rating', '$rate_count', '$cost', '$in_app', '$description');";
         $addentry_query=mysqli_query($dbconnect,$addentry_sql);
     
-        // VALUES (NULL, '$app_name', '$subtitle', '$url', '$genreID', '$developerID', '$age', '$rating', '$rate_count', '$cost', '$in_app', '$description');
+        // Get ID for next page
+        $getid_sql = "SELECT *
+FROM `00_L2_games`
+WHERE `Name` LIKE '$app_name'
+AND `Subtitle` LIKE '$subtitle'
+AND `URL` LIKE '$url'
+AND `GenreID` = '$genreID'
+AND `DeveloperID` = '$developerID'
+AND `Age` = '$age'
+AND `User Rating` = '$rating'
+AND `Rating Count` = '$rate_count'
+AND `Price` = '$cost'
+AND `In App` = '$in_app'
+";
+        $getid_query=mysqli_query($dbconnect, $getid_sql);
+        $getid_rs=mysqli_fetch_assoc($getid_query);
+        
+        $ID = $getid_rs['ID'];
+        $_SESSION['ID']=$ID;
         
     }   // end of 'no errors' if
-    
-    
+
     
 } // end of button submitted code
 
