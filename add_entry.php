@@ -24,7 +24,7 @@ $has_errors = "no";
 // set up error field colours / visibility (no errors at first)
 $app_error = $url_error = $dev_error = $description_error = $genre_error = "no-error";
 
-$app_field = $url_field = $$dev_field = $description_field = $genre_field = "form-ok";
+$app_field = $url_field = $dev_field = $description_field = $genre_field = "form-ok";
 
 // Code below excutes when the form is submitted...
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -61,6 +61,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $has_errors = "yes";
         $app_error = "error-text";
         $app_field = "form-error";
+    }
+    
+    // Check dev_name
+    if ($dev_name == "") {
+        $has_errors = "yes";
+        $dev_error = "error-text";
+        $dev_field = "form-error";
+    }
+    
+    // Check genre entry
+    if ($genreID == "") {
+        $has_errors = "yes";
+        $genre_error = "error-text";
+        $genre_field = "form-error";
+    }
+    
+    // check url entry
+    if ($url == "") {
+        $has_errors = "yes";
+        $url_error = "error-text";
+        $url_field = "form-error";
+    }
+    
+    // check description entry
+    if ($description == "") {
+        $has_errors = "yes";
+        $description_error = "error-text";
+        $description_field = "form-error";
     }
     
     // if there are no errors
@@ -157,12 +185,19 @@ AND `In App` = $in_app
                 <br />
                 
                 <!-- URL (required, must start http://) -->
-                <input class="add-field" type="text" name="url" value="<?php echo $url; ?>" placeholder="URL (required) ..." />
+                <div class="<?php echo $url_error; ?>">
+                    Please fill in the 'URL' field
+                </div>
+                
+                <input class="add-field <?php echo $url_field; ?>" type="text" name="url" value="<?php echo $url; ?>" placeholder="URL (required) ..." />
                 
                 <br />
                 
                 <!-- Genre dropdown (required) -->
-                <select class="adv" name="genre">
+                <div class="<?php echo $genre_error; ?>">
+                    Please fill in the 'Genre' field
+                </div>
+                <select class="adv <?php echo $genre_field; ?>" name="genre">
                     <!-- first / selected option -->
                     
                     <?php 
@@ -198,7 +233,10 @@ AND `In App` = $in_app
                 <br />
                 
                 <!-- Developer Name (required) -->
-                <input class="add-field" type="text" name="dev_name" value="<?php echo $dev_name; ?>" placeholder="Developer Name (required) ..." />
+                <div class="<?php echo $dev_error; ?>">
+                    Please fill in the 'Developer' field
+                </div>
+                <input class="add-field <?php echo $dev_field; ?>" type="text" name="dev_name" value="<?php echo $dev_name; ?>" placeholder="Developer Name (required) ..." />
                 
                 <br />
                 
@@ -236,7 +274,10 @@ AND `In App` = $in_app
                 <br /> 
                                 
                 <!-- Description text area -->
-                <textarea class="add-field <?php echo $description_field?>" name="description" placeholder="Description..." rows="6"><?php echo $description; ?></textarea>
+                <div class="<?php echo $description_error; ?>">
+                    Please fill in the 'Description' field
+                </div>
+                <textarea class="add-field <?php echo $description_field; ?>" name="description" placeholder="Description..." rows="6"><?php echo $description; ?></textarea>
                           
                 <!-- Submit Button -->
                 <p>
