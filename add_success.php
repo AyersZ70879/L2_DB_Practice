@@ -1,4 +1,4 @@
-<?php include("topbit.php")
+<?php include("topbit.php");
 
     // retrieves information...
     $ID = $_SESSION['ID'];
