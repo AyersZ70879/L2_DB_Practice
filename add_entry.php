@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($genreID != "") {
         $genreitem_sql = "SELECT * FROM `00_L2_games_genre` WHERE `GenreID` = $genreID";
         $genreitem_query=mysqli_query($dbconnect, $genreitem_sql);
-        $genreitem_rsd=mysqli_fetch_assoc($genreitem_query);
+        $genreitem_rs=mysqli_fetch_assoc($genreitem_query);
         $genre = $genreitem_rs['Genre'];
         
     } //end genreID if
@@ -102,13 +102,13 @@ FROM `00_L2_games`
 WHERE `Name` LIKE '$app_name'
 AND `Subtitle` LIKE '$subtitle'
 AND `URL` LIKE '$url'
-AND `GenreID` = '$genreID'
-AND `DeveloperID` = '$developerID'
-AND `Age` = '$age'
-AND `User Rating` = '$rating'
-AND `Rating Count` = '$rate_count'
-AND `Price` = '$cost'
-AND `In App` = '$in_app'
+AND `GenreID` = $genreID
+AND `DeveloperID` = $developerID
+AND `Age` = $age
+AND `User Rating` = $rating
+AND `Rating Count` = $rate_count
+AND `Price` = $cost
+AND `In App` = $in_app
 ";
         $getid_query=mysqli_query($dbconnect, $getid_sql);
         $getid_rs=mysqli_fetch_assoc($getid_query);
