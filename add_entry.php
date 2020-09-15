@@ -21,6 +21,11 @@ $description = "";
 
 $has_errors = "no";
 
+// set up error field colours / visibility (no errors at first)
+$app_error = $url_error = $dev_error = $description_error = $genre_error = "no-error";
+
+$app_field = $url_field = $$dev_field = $description_field = $genre_field = "form-ok";
+
 // Code below excutes when the form is submitted...
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -50,6 +55,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = mysqli_real_escape_string($dbconnect, $_POST['description']);
     
     // error checking will go here
+    
+    // Check App Name is not blank
+    if ($app_name == "") {
+        $has_errors = "yes";
+        $app_error = "error-text";
+        $app_field = "form-error";
+    }
     
     // if there are no errors
     if ($has_errors == "no") {
@@ -131,7 +143,11 @@ AND `In App` = $in_app
                   action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                 
                 <!-- App Name (Required) -->
-                <input class="add-field" type="text" name="app_name" value="<?php echo $app_name; ?>" placeholder="App Name (required) ..." />
+                <div class="<?php echo $app_error; ?>">
+                    Please fill in the 'App Name' field
+                </div>
+                
+                <input class="add-field <?php echo $app_field; ?>" type="text" name="app_name" value="<?php echo $app_name; ?>" placeholder="App Name (required) ..." />
                 
                 <br />
                 
