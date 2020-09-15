@@ -22,9 +22,9 @@ $description = "";
 $has_errors = "no";
 
 // set up error field colours / visibility (no errors at first)
-$app_error = $url_error = $dev_error = $description_error = $genre_error = "no-error";
+$app_error = $url_error = $dev_error = $description_error = $genre_error = $age_error = $rating_error = $count_error = "no-error";
 
-$app_field = $url_field = $dev_field = $description_field = $genre_field = "form-ok";
+$app_field = $url_field = $dev_field = $description_field = $genre_field = $age_field = $rating_field = $count_field = "form-ok";
 
 // Code below excutes when the form is submitted...
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -78,10 +78,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // check url entry
-    if ($url == "") {
+    
+    // Remove all illegal characters from a url
+    $url = filter_var($url, FILTER_SANITIZE_URL);
+    
+    if (filter_var($url, FILTER_VALIDATE_URL) == false) {
         $has_errors = "yes";
         $url_error = "error-text";
         $url_field = "form-error";
+    }
+    
+    // check rating is a decimal between 0 and 5
+    if (!is_numeric($rating) || $rating < 0 || $rating > 5) {
+        $has_errors = "yes";
+        $rating_error = "error-text";
+        $rating_field = "form-error";
+    }
+    
+    // check number of ratings is an integer that is more than 0
+    if (!ctype_digit($rate_count) || $rate_count < 1) {
+        $has_errors = "yes";
+        $count_error = "error-text";
+        $count_field = "form-error";
     }
     
     // check description entry
@@ -186,7 +204,7 @@ AND `In App` = $in_app
                 
                 <!-- URL (required, must start http://) -->
                 <div class="<?php echo $url_error; ?>">
-                    Please fill in the 'URL' field
+                    Please enter a valid 'URL' in the field
                 </div>
                 
                 <input class="add-field <?php echo $url_field; ?>" type="text" name="url" value="<?php echo $url; ?>" placeholder="URL (required) ..." />
@@ -195,7 +213,7 @@ AND `In App` = $in_app
                 
                 <!-- Genre dropdown (required) -->
                 <div class="<?php echo $genre_error; ?>">
-                    Please fill in the 'Genre' field
+                    Please choose a 'Genre'
                 </div>
                 <select class="adv <?php echo $genre_field; ?>" name="genre">
                     <!-- first / selected option -->
@@ -234,7 +252,7 @@ AND `In App` = $in_app
                 
                 <!-- Developer Name (required) -->
                 <div class="<?php echo $dev_error; ?>">
-                    Please fill in the 'Developer' field
+                    Please enter in the 'Developer'
                 </div>
                 <input class="add-field <?php echo $dev_field; ?>" type="text" name="dev_name" value="<?php echo $dev_name; ?>" placeholder="Developer Name (required) ..." />
                 
@@ -246,13 +264,19 @@ AND `In App` = $in_app
                 <br />
                 
                 <!-- Rating (Number between 0-5, 1 dp) -->
+                <div class="<?php echo $rating_error; ?>">
+                    Please enter a decimal between 1 and 5
+                </div>
                 <div>
-                    <input class="add-field" type="text" name="rating" value="<?php echo $rating; ?>" step="0.1" min="0" max="5" placeholder="Rating (0-5)" />
+                    <input class="add-field <?php echo $rating_field; ?>" type="text" name="rating" value="<?php echo $rating; ?>" step="0.1" min="0" max="5" placeholder="Rating (0-5)" />
                 </div>
                 
                 
                 <!-- # of ratings (integer more than 0) -->
-                <input class="add-field" type="text" name="count" value="<?php echo $rate_count; ?>" placeholder="# of Ratings ..." />
+                <div class="<?php echo $count_error; ?>">
+                    Please enter a decimal more than 0
+                </div>
+                <input class="add-field <?php echo $count_field; ?>" type="text" name="count" value="<?php echo $rate_count; ?>" placeholder="# of Ratings ..." />
                 
                 <br />
                 
@@ -275,7 +299,7 @@ AND `In App` = $in_app
                                 
                 <!-- Description text area -->
                 <div class="<?php echo $description_error; ?>">
-                    Please fill in the 'Description' field
+                    Please enter a valid 'Description'
                 </div>
                 <textarea class="add-field <?php echo $description_field; ?>" name="description" placeholder="Description..." rows="6"><?php echo $description; ?></textarea>
                           
